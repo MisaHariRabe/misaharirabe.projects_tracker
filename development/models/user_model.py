@@ -23,3 +23,19 @@ class UserModel:
         cursor.execute(sql, (user_email,))
         user = cursor.fetchone()
         return user
+    
+    @staticmethod
+    def update_by_id(user_name, user_email, user_dateofbirth, user_password, user_id):
+        cursor = connection.cursor()
+        sql = """
+        UPDATE user
+        SET
+            user_name = ?,
+            user_email = ?,
+            user_dateofbirth = ?,
+            user_password = ?
+        WHERE
+            user_id = ?;
+        """
+        cursor.execute(sql, (user_name, user_email, user_dateofbirth, user_password, user_id,))
+        connection.commit()
