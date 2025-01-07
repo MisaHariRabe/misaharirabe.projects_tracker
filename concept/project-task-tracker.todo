@@ -148,12 +148,12 @@ Project Entry Point (main.py):
 
 
 Database Configuration (db.py):
-    ☐ create the connection to the database
-        ☐ import sqlite3
-        ☐ create connection
-        ☐ create cursor
-        ☐ create tables
-        ☐ commit changes
+    ✔ create the connection to the database                    @done(07/01/2025 15:15:00)
+        ✔ import sqlite3                                       @done(07/01/2025 15:15:00)
+        ✔ create connection                                    @done(07/01/2025 15:15:00)
+        ✔ create cursor                                        @done(07/01/2025 15:15:00)
+        ✔ create tables                                        @done(07/01/2025 15:15:00)
+        ✔ commit changes                                       @done(07/01/2025 15:15:00)
 
 
 User Configuration:
