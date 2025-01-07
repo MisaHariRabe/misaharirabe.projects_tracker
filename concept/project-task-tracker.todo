@@ -171,21 +171,21 @@ User Configuration:
             ✔ delete_by_id                                     @done(07/01/2025 16:13:00)
             ✔ try on console                                   @done(07/01/2025 16:13:00)
 
-    ☐ Configure user views (templates/users):
-        ☐ Signup
-            ☐ Signup Title
-            ☐ Form
-                ☐ user_name
-                ☐ user_dateofbirth
-                ☐ user_email
-                ☐ user_password
-            ☐ Login link
-        ☐ Login
-            ☐ Login Title
-            ☐ Form
-                ☐ user_email
-                ☐ user_password
-            ☐ Signup link
+    ✔ Configure user views (templates/users):                  @done(07/01/2025 16:28:00)
+        ✔ Signup                                               @done(07/01/2025 16:28:00)
+            ✔ Signup Title                                     @done(07/01/2025 16:28:00)
+            ✔ Form                                             @done(07/01/2025 16:28:00)
+                ✔ user_name                                    @done(07/01/2025 16:28:00)
+                ✔ user_dateofbirth                             @done(07/01/2025 16:28:00)
+                ✔ user_email                                   @done(07/01/2025 16:28:00)
+                ✔ user_password                                @done(07/01/2025 16:28:00)
+            ✔ Login link                                       @done(07/01/2025 16:28:00)
+        ✔ Login                                                @done(07/01/2025 16:28:00)
+            ✔ Login Title                                      @done(07/01/2025 16:28:00)
+            ✔ Form                                             @done(07/01/2025 16:28:00)
+                ✔ user_email                                   @done(07/01/2025 16:28:00)
+                ✔ user_password                                @done(07/01/2025 16:28:00)
+            ✔ Signup link                                      @done(07/01/2025 16:28:00)
 
     ☐ Configure user controller (controllers/user_controller.py)
         ☐ from user_model import UserModel
