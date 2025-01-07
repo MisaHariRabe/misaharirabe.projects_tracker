@@ -114,7 +114,7 @@ SQL Writing:
 
 
 Project Skeleton:
-    ☐ create files and folders 
+    ☐ create files and folders
         ☐ __init__.py
         ☐ db.py
         ☐ main.py
