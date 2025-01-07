@@ -1,0 +1,363 @@
+☐ ✔ ✖
+
+Database Conception:
+    ✔ MCD                                                      @done(07/01/2025 10:55:33)
+        ✔ List all attributes                                  @done(07/01/2025 10:39:05)
+        ✔ Analyze entities                                     @done(07/01/2025 10:40:17)
+        ✔ Group by entities                                    @done(07/01/2025 10:41:33)
+    ✔ MLD                                                      @done(07/01/2025 10:41:33)
+        ✔ Analyze PK                                           @done(07/01/2025 10:41:33)
+        ✔ Analyze table relationship                           @done(07/01/2025 10:41:33)
+            ✔ User-Project                                     @done(07/01/2025 10:41:33)
+            ✔ Project-Task                                     @done(07/01/2025 10:55:33)
+        ✔ Create FK                                            @done(07/01/2025 10:55:33)
+        ✔ Write the output tables with PK and FK               @done(07/01/2025 10:55:33)
+            ✔ User Table                                       @done(07/01/2025 10:55:33)
+            ✔ Project Table                                    @done(07/01/2025 10:55:33)
+            ✔ Task Table                                       @done(07/01/2025 10:55:33)
+    ✔ MPD                                                      @done(07/01/2025 10:55:33)
+        ✔ Analyze each attribute type                          @done(07/01/2025 10:55:33)
+
+
+SQL Writing:
+    ✔ create the tables                                        @done(07/01/2025 10:59:00)
+        ✔ User                                                 @done(07/01/2025 10:59:00)
+        ✔ Project                                              @done(07/01/2025 10:59:00)
+        ✔ Task                                                 @done(07/01/2025 10:59:00)
+
+    ☐ data manipulation
+        ✔ User                                                 @done(07/01/2025 11:33:00)
+            ✔ create user                                      @done(07/01/2025 11:33:00)
+                ✔ user_name                                    @done(07/01/2025 11:33:00)                                    
+                ✔ user_email                                   @done(07/01/2025 11:33:00)
+                ✔ user_dateofbirth                             @done(07/01/2025 11:33:00)
+                ✔ user_password                                @done(07/01/2025 11:33:00)
+
+            ✔ get user by id                                   @done(07/01/2025 11:33:00)
+                ✔ user_id                                      @done(07/01/2025 11:33:00)
+
+            ✔ get user by email                                @done(07/01/2025 11:33:00)
+                ✔ user_email                                   @done(07/01/2025 11:33:00)
+            
+            ✔ update user by id                                @done(07/01/2025 11:33:00)
+                ✔ user_id                                      @done(07/01/2025 11:33:00)
+                ✔ user_name                                    @done(07/01/2025 11:33:00)
+                ✔ user_email                                   @done(07/01/2025 11:33:00)
+                ✔ user_dateofbirth                             @done(07/01/2025 11:33:00)
+                ✔ user_password                                @done(07/01/2025 11:33:00)
+
+            ✔ delete user by id                                @done(07/01/2025 11:33:00)
+                ✔ user_id                                      @done(07/01/2025 11:33:00)
+
+        ✔ Project                                              @done(07/01/2025 11:58:00)
+            ✔ create project                                   @done(07/01/2025 11:34:00)
+                ✔ project_name                                 @done(07/01/2025 11:34:00)
+                ✔ project_description                          @done(07/01/2025 11:34:00)
+                ✔ project_datecreation                         @done(07/01/2025 11:34:00)
+                ✔ user_id                                      @done(07/01/2025 11:34:00)
+
+            ✔ get projects by user_id                          @done(07/01/2025 11:36:00)
+                ✔ user_id                                      @done(07/01/2025 11:36:00)
+
+            ✔ get project by project_id                        @done(07/01/2025 11:37:00)
+                ✔ project_id                                   @done(07/01/2025 11:37:00)
+            
+            ✔ get project by project_name                      @done(07/01/2025 11:34:00)
+                ✔ project_name                                 @done(07/01/2025 11:34:00)
+            
+            ✔ get project by project_datecreation              @done(07/01/2025 11:47:00)
+                ✔ project_datecreation                         @done(07/01/2025 11:47:00)
+
+            ✔ get project by project_state                     @done(07/01/2025 11:50:00)
+                ✔ project_state                                @done(07/01/2025 11:50:00)
+
+            ✔ update project by project_id                     @done(07/01/2025 11:53:00)
+                ✔ project_id                                   @done(07/01/2025 11:53:00)
+                ✔ project_name                                 @done(07/01/2025 11:53:00)
+                ✔ project_description                          @done(07/01/2025 11:53:00)
+
+            ✔ update project_state by project_id               @done(07/01/2025 11:55:00)
+                ✔ project_id                                   @done(07/01/2025 11:55:00)
+
+            ✔ delete project by project_id                     @done(07/01/2025 11:58:00)
+                ✔ project_id                                   @done(07/01/2025 11:58:00)
+
+        ☐ Task
+            ✔ create task                                      @done(07/01/2025 12:03:00)
+                ✔ task_name                                    @done(07/01/2025 12:03:00)
+                ✔ task_description                             @done(07/01/2025 12:03:00)
+                ✔ task_datecreation                            @done(07/01/2025 12:03:00)
+                ✔ user_id                                      @done(07/01/2025 12:03:00)
+
+            ✔ get task by project_id                           @done(07/01/2025 12:06:00)
+                ✔ project_id                                   @done(07/01/2025 12:06:00)
+
+            ✔ get task by task_name                            @done(07/01/2025 12:13:00)
+                ✔ task_name                                    @done(07/01/2025 12:13:00)
+
+            ✔ get task by task_datecreation                    @done(07/01/2025 12:15:00)
+                ✔ task_datecreation                            @done(07/01/2025 12:15:00)
+
+            ✔ get task by task_state                           @done(07/01/2025 12:17:00)
+                ✔ task_state                                   @done(07/01/2025 12:17:00)
+
+            ✔ update task by task_id                           @done(07/01/2025 12:18:00)
+                ✔ task_id                                      @done(07/01/2025 12:18:00)
+                ✔ task_name                                    @done(07/01/2025 12:18:00)
+                ✔ task_description                             @done(07/01/2025 12:18:00)
+
+            ✔ update task_state by task_id                     @done(07/01/2025 12:19:00)
+                ✔ task_id                                      @done(07/01/2025 12:19:00)
+
+            ✔ delete task by task_id                           @done(07/01/2025 12:21:00)
+                ✔ task_id                                      @done(07/01/2025 12:21:00)
+
+
+Project Skeleton:
+    ☐ create files and folders 
+        ☐ __init__.py
+        ☐ db.py
+        ☐ main.py
+        ☐ models
+            ☐ user_model.py
+            ☐ project_model.py
+            ☐ task_model.py
+        ☐ templates
+            ☐ users
+                ☐ login.html
+                ☐ signup.html
+            ☐ projects
+                ☐ create_project.html
+                ☐ projects.html
+            ☐ tasks
+                ☐ create_task.html
+                ☐ tasks.html
+        ☐ controllers
+            ☐ user_controller.py
+            ☐ project_controller.py
+            ☐ task_controller.py
+
+
+Project Entry Point (main.py):
+    ☐ configure the project to flask application
+        ☐ import flask
+        ☐ configure flask
+            ☐ create app
+            ☐ create index route
+        ☐ run on a web browser
+
+
+Database Configuration (db.py):
+    ☐ create the connection to the database
+        ☐ import sqlite3
+        ☐ create connection
+        ☐ create cursor
+        ☐ create tables
+        ☐ commit changes
+
+
+User Configuration:
+    ☐ Configure user model (models/user_model.py)
+        ☐ from db import connection 
+        ☐ create UserModel class
+            ☐ create
+            ☐ try on console
+            ☐ get_by_id
+            ☐ try on console
+            ☐ get_by_email
+            ☐ try on console
+            ☐ update_by_id
+            ☐ try on console
+            ☐ delete_by_id
+            ☐ try on console
+
+    ☐ Configure user views (templates/users):
+        ☐ Signup
+            ☐ Signup Title
+            ☐ Form
+                ☐ user_name
+                ☐ user_dateofbirth
+                ☐ user_email
+                ☐ user_password
+            ☐ Login link
+        ☐ Login
+            ☐ Login Title
+            ☐ Form
+                ☐ user_email
+                ☐ user_password
+            ☐ Signup link
+
+    ☐ Configure user controller (controllers/user_controller.py)
+        ☐ from user_model import UserModel
+        ☐ from Flask import render_template, url_for, redirect, request
+        ☐ create UserController class
+            ☐ render_signup                [GET]
+            ☐ render_login                 [GET]
+            ☐ signup_process               [POST]
+                ☐ get user_name, user_dateofbirth, user_email, user_password from form
+                ☐ create_user
+                ☐ redirect render_login
+            ☐ login_process                [POST]
+                ☐ get user_email, user_password from form
+                ☐ get_user_by_email
+                ☐ handle response
+                    ☐ incorrect -> log incorrect && return && redirect render_login
+                    ☐ correct -> log success && return && redirect render_projects
+
+    ☐ Configure user routes (main.py)
+        ☐ from user_controller import UserController
+        ☐ [GET]    /                           UserController.render_login
+        ☐ [GET]    /signup                     UserController.render_signup
+        ☐ [POST]   /signup/process             UserController.signup_process
+        ☐ [POST]   /login/process              UserController.login_process
+
+
+Project Configuration:
+    ☐ Configure project model (models/project_model.py)
+        ☐ from db import connection 
+        ☐ create ProjectModel class
+            ☐ create
+            ☐ try on console
+            ☐ get_by_user_id
+            ☐ try on console
+            ☐ get_by_project_id
+            ☐ try on console
+            ☐ get_by_project_name
+            ☐ try on console
+            ☐ get_by_project_datecreation
+            ☐ try on console
+            ☐ get_by_project_state
+            ☐ try on console
+            ☐ update_by_project_id
+            ☐ try on console
+            ☐ update_state_by_project_id
+            ☐ try on console
+            ☐ delete_by_project_id
+            ☐ try on console
+
+    ☐ Configure project views (templates/projects):
+        ☐ Create Project
+            ☐ Create Project Title
+            ☐ Form
+                ☐ project_name
+                ☐ project_description
+        ☐ Projects List
+            ☐ My Projects Title
+            ☐ Create Project Button
+            ☐ Projects List
+                ☐ project_title
+                ☐ project_description
+                ☐ project_datecreation
+                ☐ project_state = <> = Button (update_state_by_project_id)
+                ☐ delete button (link with project_id)
+
+    ☐ Configure project controller (controllers/project_controller.py)
+        ☐ from project_model import ProjectModel
+        ☐ from Flask import render_template, url_for, redirect, request
+        ☐ create ProjectController class
+            ☐ render_create_project_form   [GET]
+            ☐ render_projects_list         [GET]
+                ☐ get { user_id } from url
+                ☐ get_by_user_id(user_id)
+                ☐ render_template projects.html
+            ☐ create_project_process       [POST]
+                ☐ get {
+                        project_name,
+                        project_description
+                    } from form
+                ☐ create_project(project_name, project_description)
+                ☐ redirect render_projects_list
+            ☐ update_project_process       [GET]
+                ☐ get { project_id } from url
+                ☐ update_state_by_project_id(project_id)
+                ☐ redirect render_projects_list
+            ☐ delete_project_process       [GET]
+                ☐ get { project_id } from url
+                ☐ delete_by_project_id(project_id)
+                ☐ redirect render_projects_list
+
+    ☐ Configure project routes (main.py)
+        ☐ from project_controller import ProjectController
+        ☐ [GET]    /project/create                     ProjectController.render_create_project_form
+        ☐ [GET]    /project/user_id=<int:user_id>      ProjectController.render_projects_list
+        ☐ [POST]   /project/create/process             ProjectController.create_project_process
+        ☐ [GET]    /project/done/<int:project_id>    ProjectController.update_project_process
+        ☐ [GET]    /project/delete/<int:project_id>    ProjectController.delete_project_process
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Task Configuration:
+    ☐ Configure task model (models/task_model.py)
+        ☐ from db import connection 
+        ☐ create TaskModel class
+            ☐ create
+            ☐ try on console
+            ☐ get_by_project_id
+            ☐ try on console
+            ☐ get_by_task_id
+            ☐ try on console
+            ☐ get_by_task_name
+            ☐ try on console
+            ☐ get_by_task_datecreation
+            ☐ try on console
+            ☐ get_by_task_state
+            ☐ try on console
+            ☐ update_by_task_id
+            ☐ try on console
+            ☐ update_state_by_task_id
+            ☐ try on console
+            ☐ delete_by_task_id
+            ☐ try on console
+
+    ☐ Configure task views (templates/tasks):
+        ☐ Create Task
+            ☐ Create Task Title
+            ☐ Form
+                ☐ task_name
+                ☐ task_description
+        ☐ Tasks List
+            ☐ My Tasks Title
+            ☐ Create Task Button
+            ☐ Tasks List
+                ☐ task_title
+                ☐ task_description
+                ☐ task_datecreation
+                ☐ task_state = <> = Button (update_state_by_task_id)
+                ☐ delete button (link with task_id)
+
+    ☐ Configure task controller (controllers/task_controller.py)
+        ☐ from task_model import TaskModel
+        ☐ from Flask import render_template, url_for, redirect, request
+        ☐ create TaskController class
+            ☐ render_create_task_form   [GET]
+            ☐ render_tasks_list         [GET]
+                ☐ get { project_id } from url
+                ☐ get_by_project_id(project_id)
+                ☐ render_template tasks.html
+            ☐ create_task_process       [POST]
+                ☐ get {
+                        task_name,
+                        task_description
+                    } from form
+                ☐ create_task(task_name, task_description)
+                ☐ redirect render_tasks_list
+            ☐ update_task_process       [GET]
+                ☐ get { task_id } from url
+                ☐ update_state_by_task_id(task_id)
+                ☐ redirect render_tasks_list
+            ☐ delete_task_process       [GET]
+                ☐ get { task_id } from url
+                ☐ delete_by_task_id(task_id)
+                ☐ redirect render_tasks_list
+
+    ☐ Configure task routes (main.py)
+        ☐ from task_controller import TaskController
+        ☐ [GET]    /task/create                     TaskController.render_create_task_form
+        ☐ [GET]    /task/project_id=<int:project_id>      TaskController.render_tasks_list
+        ☐ [POST]   /task/create/process             TaskController.create_task_process
+        ☐ [GET]    /task/done/<int:task_id>    TaskController.update_task_process
+        ☐ [GET]    /task/delete/<int:task_id>    TaskController.delete_task_process

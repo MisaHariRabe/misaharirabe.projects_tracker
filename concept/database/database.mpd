@@ -1,0 +1,22 @@
+User
+    [PK]    user_id                 INT
+            user_name               VARCHAR(50)
+            user_email              VARCHAR(50)
+            user_dateofbirth        DATETIME
+            user_password           VARCHAR(50)
+    
+Project
+    [PK]    project_id              INT
+            project_name            VARCHAR(50)
+            project_description     TEXT
+            project_datecreation    DATETIME
+            project_state           BOOLEAN
+            user_id                 INT             [FK -> user.user_id]
+
+Task
+    [PK]    task_id                 INT
+            task_name               VARCHAR(50)
+            task_description        TEXT
+            task_datecreation       DATETIME
+            task_state              BOOLEAN
+            project_id              INT             [FK -> project.project_id]

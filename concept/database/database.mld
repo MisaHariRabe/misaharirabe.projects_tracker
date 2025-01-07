@@ -1,0 +1,51 @@
+Analyze PK:
+    User        ->  user_id         PK
+    Project     ->  project_id      PK
+    Task        ->  task_id         PK
+
+
+Analyze table relationship:
+    
+                  (1,n)
+                  AVOIR
+    USER    ----------------->  PROJECT
+            <-----------------       
+                APPARTENIR
+                  (1,1)
+
+    ==> The project table will have a FK referencing to the user_id
+
+
+                  (1,n)
+                  AVOIR
+    PROJECT ----------------->  TASK
+            <-----------------       
+                APPARTENIR
+                  (1,1)
+
+    ==> The task table will have a FK referencing to the project_id
+
+
+Output Tables:
+    User
+    [PK]    user_id
+            user_name
+            user_email
+            user_password
+            user_dateofbirth
+    
+    Project
+    [PK]    project_id
+            project_name
+            project_description
+            project_datecreation
+            project_state
+            user_id                 [FK -> user.user_id]
+
+    Task
+    [PK]    task_id
+            task_name
+            task_description
+            task_datecreation
+            task_state
+            project_id              [FK -> project.project_id]
