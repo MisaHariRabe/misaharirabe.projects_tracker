@@ -193,23 +193,23 @@ User Configuration:
         ✔ create UserController class                                                      @done(07/01/2025 17:46:00)
             ✔ render_signup                [GET]                                           @done(07/01/2025 16:42:00)
             ✔ render_login                 [GET]                                           @done(07/01/2025 16:45:00)
-            ✔ signup_process               [POST]                                          @done(07/01/2025 17:36:00)
+            ✔ process_signup               [POST]                                          @done(07/01/2025 17:36:00)
                 ✔ get user_name, user_dateofbirth, user_email, user_password from form     @done(07/01/2025 17:36:00)
                 ✔ create_user                                                              @done(07/01/2025 17:36:00)
                 ✔ redirect render_login                                                    @done(07/01/2025 17:36:00)
-            ✔ login_process                [POST]                                          @done(07/01/2025 17:46:00)
+            ✔ process_login                [POST]                                          @done(07/01/2025 17:46:00)
                 ✔ get user_email, user_password from form                                  @done(07/01/2025 17:46:00)
                 ✔ get_user_by_email                                                        @done(07/01/2025 17:46:00)
                 ✔ handle response                                                          @done(07/01/2025 17:46:00)
                     ✔ incorrect -> log incorrect && return && redirect render_login        @done(07/01/2025 17:46:00)
                     ✔ correct -> log success && return && redirect render_projects         @done(07/01/2025 17:46:00)
 
-    ☐ Configure user routes (main.py)
-        ☐ from user_controller import UserController
-        ☐ [GET]    /                           UserController.render_login
-        ☐ [GET]    /signup                     UserController.render_signup
-        ☐ [POST]   /signup/process             UserController.signup_process
-        ☐ [POST]   /login/process              UserController.login_process
+    ✔ Configure user routes (main.py)                                                      @done(07/01/2025 18:03:00)
+        ✔ from user_controller import UserController                                       @done(07/01/2025 18:03:00)
+        ✔ [GET]    /                           UserController.render_login                 @done(07/01/2025 18:03:00)
+        ✔ [POST]   /                           UserController.process_login                @done(07/01/2025 18:03:00)
+        ✔ [GET]    /signup                     UserController.render_signup                @done(07/01/2025 18:03:00)
+        ✔ [POST]   /signup                     UserController.process_signup               @done(07/01/2025 18:03:00)
 
 
 Project Configuration:

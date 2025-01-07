@@ -9,11 +9,11 @@
 
 <body>
     <h1>Create an account</h1>
-    <form action="/signup/process" method="post">
+    <form action="/signup" method="post">
         <input type="text" name="user_name" required aria-required="true">
         <input type="date" name="user_dateofbirth" required aria-required="true">
         <input type="text" name="user_email" required aria-required="true">
-        <input type="text" name="user_password" required aria-required="true">
+        <input type="password" name="user_password" required aria-required="true">
         <button type="submit">Sign Up</button>
     </form>
     <p>Already have an account ? <a href="/login">Login</a></p>

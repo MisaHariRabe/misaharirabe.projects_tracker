@@ -9,9 +9,9 @@
 
 <body>
     <h1>Login</h1>
-    <form action="/login/process" method="post">
-        <input type="text" name="user_email">
-        <input type="text" name="user_password">
+    <form action="/" method="post">
+        <input type="text" name="user_email" required aria-required="true">
+        <input type="password" name="user_password" required aria-required="true">
         <button>Login</button>
     </form>
     <p>Don't have an account yet ? <a href="/signup">Signup</a></p>
