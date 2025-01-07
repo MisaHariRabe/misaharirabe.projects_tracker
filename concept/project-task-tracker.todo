@@ -114,37 +114,37 @@ SQL Writing:
 
 
 Project Skeleton:
-    ☐ create files and folders
-        ☐ __init__.py
-        ☐ db.py
-        ☐ main.py
-        ☐ models
-            ☐ user_model.py
-            ☐ project_model.py
-            ☐ task_model.py
-        ☐ templates
-            ☐ users
-                ☐ login.html
-                ☐ signup.html
-            ☐ projects
-                ☐ create_project.html
-                ☐ projects.html
-            ☐ tasks
-                ☐ create_task.html
-                ☐ tasks.html
-        ☐ controllers
-            ☐ user_controller.py
-            ☐ project_controller.py
-            ☐ task_controller.py
+    ✔ create files and folders                                 @done(07/01/2025 12:25:00)
+        ✔ __init__.py                                          @done(07/01/2025 12:25:00)
+        ✔ db.py                                                @done(07/01/2025 12:25:00)
+        ✔ main.py                                              @done(07/01/2025 12:25:00)
+        ✔ models                                               @done(07/01/2025 12:25:00)
+            ✔ user_model.py                                    @done(07/01/2025 12:25:00)
+            ✔ project_model.py                                 @done(07/01/2025 12:25:00)
+            ✔ task_model.py                                    @done(07/01/2025 12:25:00)
+        ✔ templates                                            @done(07/01/2025 12:25:00)
+            ✔ users                                            @done(07/01/2025 12:25:00)
+                ✔ login.html                                   @done(07/01/2025 12:25:00)
+                ✔ signup.html                                  @done(07/01/2025 12:25:00)
+            ✔ projects                                         @done(07/01/2025 12:25:00)
+                ✔ create_project.html                          @done(07/01/2025 12:25:00)       
+                ✔ projects.html                                @done(07/01/2025 12:25:00)   
+            ✔ tasks                                            @done(07/01/2025 12:25:00)
+                ✔ create_task.html                             @done(07/01/2025 12:25:00)   
+                ✔ tasks.html                                   @done(07/01/2025 12:25:00)
+        ✔ controllers                                          @done(07/01/2025 12:25:00)
+            ✔ user_controller.py                               @done(07/01/2025 12:25:00)   
+            ✔ project_controller.py                            @done(07/01/2025 12:25:00)       
+            ✔ task_controller.py                               @done(07/01/2025 12:25:00)   
 
 
 Project Entry Point (main.py):
-    ☐ configure the project to flask application
-        ☐ import flask
-        ☐ configure flask
-            ☐ create app
-            ☐ create index route
-        ☐ run on a web browser
+    ✔ configure the project to flask application               @done(07/01/2025 15:09:00)
+        ✔ import flask                                         @done(07/01/2025 15:09:00)
+        ✔ configure flask                                      @done(07/01/2025 15:09:00)
+            ✔ create app                                       @done(07/01/2025 15:09:00)
+            ✔ create index route                               @done(07/01/2025 15:09:00)
+        ✔ run on a web browser                                 @done(07/01/2025 15:09:00)
 
 
 Database Configuration (db.py):
