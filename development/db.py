@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect("projects_tracker.db")
+connection = sqlite3.connect("projects_tracker.db", check_same_thread=False)
 
 cursor = connection.cursor()
 
