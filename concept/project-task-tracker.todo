@@ -188,11 +188,11 @@ User Configuration:
             ✔ Signup link                                      @done(07/01/2025 16:28:00)
 
     ☐ Configure user controller (controllers/user_controller.py)
-        ☐ from user_model import UserModel
-        ☐ from Flask import render_template, url_for, redirect, request
+        ✔ from user_model import UserModel                                                 @done(07/01/2025 16:42:00)
+        ✔ from Flask import render_template, url_for, redirect, request                    @done(07/01/2025 16:42:00)
         ☐ create UserController class
-            ☐ render_signup                [GET]
-            ☐ render_login                 [GET]
+            ✔ render_signup                [GET]                                           @done(07/01/2025 16:42:00)
+            ✔ render_login                 [GET]                                           @done(07/01/2025 16:45:00)
             ☐ signup_process               [POST]
                 ☐ get user_name, user_dateofbirth, user_email, user_password from form
                 ☐ create_user
