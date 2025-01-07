@@ -158,10 +158,10 @@ Database Configuration (db.py):
 
 User Configuration:
     ☐ Configure user model (models/user_model.py)
-        ☐ from db import connection 
+        ✔ from db import connection                            @done(07/01/2025 15:37:00)
         ☐ create UserModel class
-            ☐ create
-            ☐ try on console
+            ✔ create                                           @done(07/01/2025 15:37:00)
+            ✔ try on console                                   @done(07/01/2025 15:37:00)
             ☐ get_by_id
             ☐ try on console
             ☐ get_by_email
