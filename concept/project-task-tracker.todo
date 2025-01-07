@@ -157,9 +157,9 @@ Database Configuration (db.py):
 
 
 User Configuration:
-    ☐ Configure user model (models/user_model.py)
+    ✔ Configure user model (models/user_model.py)              @done(07/01/2025 16:13:00)
         ✔ from db import connection                            @done(07/01/2025 15:37:00)
-        ☐ create UserModel class
+        ✔ create UserModel class                               @done(07/01/2025 16:13:00)
             ✔ create                                           @done(07/01/2025 15:37:00)
             ✔ try on console                                   @done(07/01/2025 15:37:00)
             ✔ get_by_id                                        @done(07/01/2025 15:45:00)
@@ -168,8 +168,8 @@ User Configuration:
             ✔ try on console                                   @done(07/01/2025 15:59:00)
             ✔ update_by_id                                     @done(07/01/2025 16:09:00)
             ✔ try on console                                   @done(07/01/2025 16:09:00)
-            ☐ delete_by_id
-            ☐ try on console
+            ✔ delete_by_id                                     @done(07/01/2025 16:13:00)
+            ✔ try on console                                   @done(07/01/2025 16:13:00)
 
     ☐ Configure user views (templates/users):
         ☐ Signup

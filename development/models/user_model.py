@@ -39,3 +39,14 @@ class UserModel:
         """
         cursor.execute(sql, (user_name, user_email, user_dateofbirth, user_password, user_id,))
         connection.commit()
+
+    @staticmethod
+    def delete_by_id(user_id):
+        cursor = connection.cursor()
+        sql = """
+        DELETE FROM user
+        WHERE
+            user_id = ?;
+        """
+        cursor.execute(sql, (user_id,))
+        connection.commit()
