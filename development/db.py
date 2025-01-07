@@ -4,7 +4,7 @@ connection = sqlite3.connect("projects_tracker.db")
 
 cursor = connection.cursor()
 
-cursor.executemany("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS
     user (
         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -13,7 +13,9 @@ CREATE TABLE IF NOT EXISTS
         user_dateofbirth DATE NOT NULL,
         user_password TEXT NOT NULL
     );
+""")
 
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS
     project (
         project_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,7 +25,9 @@ CREATE TABLE IF NOT EXISTS
         project_state BOOLEAN NOT NULL,
         user_id REFERENCES user (user_id) ON DELETE CASCADE
     );
+""")
 
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS
     task (
         task_id INTEGER PRIMARY KEY AUTOINCREMENT,
