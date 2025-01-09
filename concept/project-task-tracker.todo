@@ -212,28 +212,28 @@ User Configuration:
         ✔ [POST]   /signup                     UserController.process_signup               @done(07/01/2025 18:03:00)
 
 
-Project Configuration:
-    ☐ Configure project model (models/project_model.py)
-        ☐ from db import connection 
-        ☐ create ProjectModel class
-            ☐ create
-            ☐ try on console
-            ☐ get_by_user_id
-            ☐ try on console
-            ☐ get_by_project_id
-            ☐ try on console
-            ☐ get_by_project_name
-            ☐ try on console
-            ☐ get_by_project_datecreation
-            ☐ try on console
-            ☐ get_by_project_state
-            ☐ try on console
-            ☐ update_by_project_id
-            ☐ try on console
-            ☐ update_state_by_project_id
-            ☐ try on console
-            ☐ delete_by_project_id
-            ☐ try on console
+Project Configuration:                                                                     
+    ✔ Configure project model (models/project_model.py)                                    @done(09/01/2025 19:12:00)
+        ✔ from db import connection                                                        @done(09/01/2025 18:49:00)
+        ✔ create ProjectModel class                                                        @done(09/01/2025 18:49:00)
+            ✔ create                                                                       @done(09/01/2025 18:49:00)
+            ✔ try on console                                                               @done(09/01/2025 18:49:00)
+            ✔ get_by_user_id                                                               @done(09/01/2025 18:54:00)
+            ✔ try on console                                                               @done(09/01/2025 18:54:00)
+            ✔ get_by_project_id                                                            @done(09/01/2025 18:57:00)
+            ✔ try on console                                                               @done(09/01/2025 18:57:00)
+            ✔ get_by_project_name                                                          @done(09/01/2025 19:00:00)
+            ✔ try on console                                                               @done(09/01/2025 19:00:00)
+            ✔ get_by_project_datecreation                                                  @done(09/01/2025 19:04:00)
+            ✔ try on console                                                               @done(09/01/2025 19:04:00)
+            ✔ get_by_project_state                                                         @done(09/01/2025 19:06:00)
+            ✔ try on console                                                               @done(09/01/2025 19:06:00)
+            ✔ update_by_project_id                                                         @done(09/01/2025 19:09:00)
+            ✔ try on console                                                               @done(09/01/2025 19:09:00)
+            ✔ update_state_by_project_id                                                   @done(09/01/2025 19:11:00)
+            ✔ try on console                                                               @done(09/01/2025 19:11:00)
+            ✔ delete_by_project_id                                                         @done(09/01/2025 19:12:00)
+            ✔ try on console                                                               @done(09/01/2025 19:12:00)
 
     ☐ Configure project views (templates/projects):
         ☐ Create Project
