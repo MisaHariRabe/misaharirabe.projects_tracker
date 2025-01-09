@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects List</title>
+</head>
+
+<body>
+    <h1>Your projects</h1>
+    <a href="#create_project">New project</a>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date creation</th>
+            <th>State</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td>{{project[1]}}</td>
+                <td>{{project[2]}}</td>
+                <td>{{project[3]}}</td>
+                <td>
+                    <form action="/projects/finish/{{project[0]}}">
+                        <input type="submit" value="Mark done">
+                    </form>
+                </td>
+                <td>
+                    <form action="/projects/delete/{{project[0]}}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

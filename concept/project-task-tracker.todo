@@ -235,46 +235,46 @@ Project Configuration:
             ✔ delete_by_project_id                                                         @done(09/01/2025 19:12:00)
             ✔ try on console                                                               @done(09/01/2025 19:12:00)
 
-    ☐ Configure project views (templates/projects):
-        ☐ Create Project
-            ☐ Create Project Title
-            ☐ Form
-                ☐ project_name
-                ☐ project_description
-        ☐ Projects List
-            ☐ My Projects Title
-            ☐ Create Project Button
-            ☐ Projects List
-                ☐ project_title
-                ☐ project_description
-                ☐ project_datecreation
-                ☐ project_state = <> = Button (update_state_by_project_id)
-                ☐ delete button (link with project_id)
+    ✔ Configure project views (templates/projects):                                        @done(09/01/2025 19:30:00)
+        ✔ Create Project                                                                   @done(09/01/2025 19:20:00)
+            ✔ Create Project Title                                                         @done(09/01/2025 19:20:00)
+            ✔ Form                                                                         @done(09/01/2025 19:20:00)
+                ✔ project_name                                                             @done(09/01/2025 19:20:00)
+                ✔ project_description                                                      @done(09/01/2025 19:20:00)
+        ✔ Projects List                                                                    @done(09/01/2025 19:30:00)
+            ✔ My Projects Title                                                            @done(09/01/2025 19:30:00)
+            ✔ Create Project Button                                                        @done(09/01/2025 19:30:00)
+            ✔ Projects List                                                                @done(09/01/2025 19:30:00)
+                ✔ project_title                                                            @done(09/01/2025 19:30:00)
+                ✔ project_description                                                      @done(09/01/2025 19:30:00)
+                ✔ project_datecreation                                                     @done(09/01/2025 19:30:00)
+                ✔ project_state = <> = Button (update_state_by_project_id)                 @done(09/01/2025 19:30:00)
+                ✔ delete button (link with project_id)                                     @done(09/01/2025 19:30:00)
 
-    ☐ Configure project controller (controllers/project_controller.py)
-        ☐ from project_model import ProjectModel
-        ☐ from Flask import render_template, url_for, redirect, request
-        ☐ create ProjectController class
-            ☐ render_create_project_form   [GET]
-            ☐ render_projects_list         [GET]
-                ☐ get { user_id } from url
-                ☐ get_by_user_id(user_id)
-                ☐ render_template projects.html
-            ☐ create_project_process       [POST]
-                ☐ get {
+    ✔ Configure project controller (controllers/project_controller.py)                     @done(09/01/2025 19:49:00)
+        ✔ from project_model import ProjectModel                                           @done(09/01/2025 19:49:00)
+        ✔ from Flask import render_template, url_for, redirect, request                    @done(09/01/2025 19:49:00)
+        ✔ create ProjectController class                                                   @done(09/01/2025 19:49:00)
+            ✔ render_create_project_form   [GET]                                           @done(09/01/2025 19:49:00)
+            ✔ render_projects_list         [GET]                                           @done(09/01/2025 19:49:00)
+                ✔ get { user_id } from url                                                 @done(09/01/2025 19:49:00)
+                ✔ get_by_user_id(user_id)                                                  @done(09/01/2025 19:49:00)
+                ✔ render_template projects.html                                            @done(09/01/2025 19:49:00)
+            ✔ create_project_process       [POST]                                          @done(09/01/2025 19:49:00)
+                ✔ get {                                                                    @done(09/01/2025 19:49:00)
                         project_name,
                         project_description
                     } from form
-                ☐ create_project(project_name, project_description)
-                ☐ redirect render_projects_list
-            ☐ update_project_process       [GET]
-                ☐ get { project_id } from url
-                ☐ update_state_by_project_id(project_id)
-                ☐ redirect render_projects_list
-            ☐ delete_project_process       [GET]
-                ☐ get { project_id } from url
-                ☐ delete_by_project_id(project_id)
-                ☐ redirect render_projects_list
+                ✔ create_project(project_name, project_description)                        @done(09/01/2025 19:49:00)
+                ✔ redirect render_projects_list                                            @done(09/01/2025 19:49:00)
+            ✔ update_project_process       [GET]                                           @done(09/01/2025 19:49:00)
+                ✔ get { project_id } from url                                              @done(09/01/2025 19:49:00)
+                ✔ update_state_by_project_id(project_id)                                   @done(09/01/2025 19:49:00)
+                ✔ redirect render_projects_list                                            @done(09/01/2025 19:49:00)
+            ✔ delete_project_process       [GET]                                           @done(09/01/2025 19:49:00)
+                ✔ get { project_id } from url                                              @done(09/01/2025 19:49:00)
+                ✔ delete_by_project_id(project_id)                                         @done(09/01/2025 19:49:00)
+                ✔ redirect render_projects_list                                            @done(09/01/2025 19:49:00)
 
     ☐ Configure project routes (main.py)
         ☐ from project_controller import ProjectController
