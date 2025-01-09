@@ -5,11 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects List</title>
+    <style>
+        thead {
+            background-color: lightgreen;
+        }
+
+        th,
+        td {
+            min-width: 250px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Your projects</h1>
-    <a href="#create_project">New project</a>
+    <a href="/projects/create">New project</a>
     <table>
         <thead>
             <th>Title</th>
@@ -25,12 +36,18 @@
                 <td>{{project[2]}}</td>
                 <td>{{project[3]}}</td>
                 <td>
-                    <form action="/projects/finish/{{project[0]}}">
+                    {% if project[4] != 0 %}
+                    <span style="color: green;">
+                        <b>Finished</b>
+                    </span>
+                    {% else %}
+                    <form action="/projects/finish/{{project[0]}}" method="post">
                         <input type="submit" value="Mark done">
                     </form>
+                    {% endif %}
                 </td>
                 <td>
-                    <form action="/projects/delete/{{project[0]}}">
+                    <form action="/projects/delete/{{project[0]}}" method="post">
                         <input type="submit" value="Delete">
                     </form>
                 </td>

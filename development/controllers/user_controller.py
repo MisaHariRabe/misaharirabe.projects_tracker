@@ -1,5 +1,5 @@
 from models.user_model import UserModel
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, session
 
 class UserController:
     @staticmethod
@@ -26,4 +26,5 @@ class UserController:
         user = UserModel.get_by_email(user_email)
         if user[4] != user_password:
             return redirect(url_for("login"))
-        return f"<h1>Welcome back, {user[1]}</h1>"
+        session["user_id"] = user[0]
+        return redirect("/projects")

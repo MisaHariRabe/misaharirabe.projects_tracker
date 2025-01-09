@@ -6,7 +6,7 @@ class ProjectController:
     @staticmethod
     def render_create_project_form():
         AuthUtils.isAuthenticated()
-        return render_template("projects/create_projects.html")
+        return render_template("projects/create_project.html")
 
     @staticmethod
     def render_projects_list():
@@ -26,11 +26,18 @@ class ProjectController:
     @staticmethod
     def process_update_state(project_id):
         AuthUtils.isAuthenticated()
-        ProjectModel.update_state_by_project_id(project_id)
-        return redirect(url_for("render_projects"))
+        try:
+            ProjectModel.update_state_by_project_id(project_id)
+        except:
+            print("Error: There was an error when you tried to update the project")
+        finally:
+            return redirect(url_for("render_projects"))
     
     @staticmethod
     def process_delete_project(project_id):
-        AuthUtils.isAuthenticated()
-        ProjectModel.delete_by_project_id(project_id)
-        return redirect(url_for("render_projects"))
+        try:
+            ProjectModel.delete_by_project_id(project_id)
+        except:
+            print("Error: There was an error when you tried to delete the project")
+        finally:
+            return redirect(url_for("render_projects"))
