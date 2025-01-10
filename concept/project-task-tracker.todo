@@ -276,13 +276,14 @@ Project Configuration:
                 ✔ delete_by_project_id(project_id)                                         @done(09/01/2025 19:49:00)
                 ✔ redirect render_projects_list                                            @done(09/01/2025 19:49:00)
 
-    ☐ Configure project routes (main.py)
-        ☐ from project_controller import ProjectController
-        ☐ [GET]    /project/create                     ProjectController.render_create_project_form
-        ☐ [GET]    /project/user_id=<int:user_id>      ProjectController.render_projects_list
-        ☐ [POST]   /project/create/process             ProjectController.create_project_process
-        ☐ [GET]    /project/done/<int:project_id>    ProjectController.update_project_process
-        ☐ [GET]    /project/delete/<int:project_id>    ProjectController.delete_project_process
+    ✔ Configure project routes (main.py)                                                           @done(09/01/2025 19:52:00)
+        ✔ from project_controller import ProjectController                                         @done(09/01/2025 19:52:00)
+        ✔ [GET]    /projects                           ProjectController.render_projects_list      @done(09/01/2025 19:52:00)
+        ✔ [GET, POST]    /projects/create                                                          @done(09/01/2025 19:52:00)
+            ✔ [GET]        ProjectController.render_create_project_form                            @done(09/01/2025 19:52:00)
+            ✔ [POST]       ProjectController.process_create_project                                @done(09/01/2025 19:52:00)
+        ✔ [POST]    /project/finish/<int:project_id>   ProjectController.process_update_state      @done(09/01/2025 19:52:00)
+        ✔ [POST]    /project/delete/<int:project_id>   ProjectController.process_delete_project    @done(09/01/2025 19:52:00)
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
