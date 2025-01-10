@@ -1,64 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects {{project_id}} Task List</title>
-    <style>
-        thead {
-            background-color: lightgreen;
-        }
-
-        th,
-        td {
-            min-width: 250px;
-            padding: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <a href="/logout">Logout</a>
-    <h1>{{project[1]}}</h1>
-    <p>{{project[2]}}</p>
-    <br>
-    <h2>Your Tasks</h2>
-    <a href="/tasks/create/{{project_id}}">New task</a>
-    <table>
-        <thead>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date creation</th>
-            <th>State</th>
-            <th></th>
-        </thead>
-        <tbody>
-            {% for task in tasks %}
-            <tr>
-                <td>{{task[1]}}</td>
-                <td>{{task[2]}}</td>
-                <td>{{task[3]}}</td>
-                <td>
-                    {% if task[4] != 0 %}
-                    <span style="color: green;">
-                        <b>Finished</b>
-                    </span>
-                    {% else %}
-                    <form action="/tasks/{{project_id}}/finish/{{task[0]}}" method="post">
-                        <input type="submit" value="Mark done">
-                    </form>
-                    {% endif %}
-                </td>
-                <td>
-                    <form action="/tasks/{{project_id}}/delete/{{task[0]}}" method="post">
-                        <input type="submit" value="Delete">
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-
-</html>
+{%extends "base.html" %}
+{% block title %}Projects {{project_id}} Task List{% endblock %}
+{% block main %}
+<a href="/logout">Logout</a>
+<h1>{{project[1]}}</h1>
+<p>{{project[2]}}</p>
+<br>
+<h2>Your Tasks</h2>
+<a href="/tasks/create/{{project_id}}">New task</a>
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date creation</th>
+        <th>State</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task[1]}}</td>
+            <td>{{task[2]}}</td>
+            <td>{{task[3]}}</td>
+            <td>
+                {% if task[4] != 0 %}
+                <span style="color: green;">
+                    <b>Finished</b>
+                </span>
+                {% else %}
+                <form action="/tasks/{{project_id}}/finish/{{task[0]}}" method="post">
+                    <input type="submit" value="Mark done">
+                </form>
+                {% endif %}
+            </td>
+            <td>
+                <form action="/tasks/{{project_id}}/delete/{{task[0]}}" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

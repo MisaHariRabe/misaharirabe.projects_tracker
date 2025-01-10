@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}Create a project{%endblock%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a project</title>
-</head>
-
-<body>
-    <h1>Create a project</h1>
-    <form action="/projects/create" method="post">
-        <input type="text" id="project_name" name="project_name" required aria-required="true">
-        <textarea name="project_description" id="project_description" required aria-required="true"></textarea>
-        <input type="submit" value="Create">
-    </form>
-</body>
-
-</html>
+{% block main %}
+<h1>Create a project</h1>
+<form action="/projects/create" method="post">
+    <input type="text" id="project_name" name="project_name" required aria-required="true">
+    <textarea name="project_description" id="project_description" required aria-required="true"></textarea>
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

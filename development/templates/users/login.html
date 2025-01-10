@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{%extends "base.html" %}
+{% block title %}Log in{% endblock %}
+{% block main %}
+<h1>Login</h1>
+<form action="/" method="post">
+    <div class="input_field_container">
+        <label id="user_email_label" aria-label="user_email_label" for="user_email">Email</label>
+        <input id="user_email" aria-labelledby="user_email_label" placeholder="youremail@example.com" type="email"
+            name="user_email" required aria-required="true">
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in my account</title>
-</head>
+    <div class="input_field_container">
+        <label id="user_password_label" aria-label="user_password_label" for="user_password">Password</label>
+        <input id="user_password" aria-labelledby="user_password_label" placeholder="Your password" type="password"
+            name="user_password" required aria-required="true">
+    </div>
 
-<body>
-    <h1>Login</h1>
-    <form action="/" method="post">
-        <input type="text" name="user_email" required aria-required="true">
-        <input type="password" name="user_password" required aria-required="true">
-        <button>Login</button>
-    </form>
-    <p>Don't have an account yet ? <a href="/signup">Signup</a></p>
-</body>
-
-</html>
+    <button class="cta">Login</button>
+</form>
+<p><span class="sub">Don't have an account yet ?</span> <a href="/signup">Signup</a></p>
+{% endblock %}
