@@ -1,12 +1,33 @@
 from flask import Flask, request
+from models import db
+from os import environ
+from dotenv import load_dotenv
 from flask_wtf.csrf import CSRFProtect
 from controllers.user_controller import UserController
 from controllers.project_controller import ProjectController
 from controllers.task_controller import TaskController
 
+
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = 'BASIC_SECRET_KEY'
+app.secret_key = environ.get("FLASK_SECRET_KEY")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DATABASE_URL", "sqlite:///projects_tracker.db")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 csrf = CSRFProtect(app)
+
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
+@app.after_request
+def add_security_headers(response):
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    return response
 
 @app.route("/", methods=['GET', 'POST'])
 def login():

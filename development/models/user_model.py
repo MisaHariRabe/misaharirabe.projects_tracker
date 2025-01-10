@@ -1,62 +1,34 @@
+from . import db
 import bcrypt
-from db import connection
 
-class UserModel:
-    @staticmethod
-    def create(user_name, user_dateofbirth, user_email, user_password):
-        cursor = connection.cursor()
-        password_bytes = user_password.encode("utf-8")
-        salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(password_bytes, salt)
+class User(db.Model):
+    __tablename__ = 'user'
 
-        sql = "INSERT INTO user (user_name, user_dateofbirth, user_email, user_password) VALUES (?,?,?,?);"
-        cursor.execute(sql, (user_name, user_dateofbirth, user_email, hashed_password,))
-        connection.commit()
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_name = db.Column(db.String(100), nullable=False)
+    user_email = db.Column(db.String(120), unique=True, nullable=False)
+    user_dateofbirth = db.Column(db.Date, nullable=False)
+    user_password = db.Column(db.LargeBinary, nullable=False)
+
+    projects = db.relationship('Project', backref='user', lazy=True, cascade="all, delete-orphan")
 
     @staticmethod
-    def verify_password(plain_password, hashed_password):
-        password_bytes = plain_password.encode("utf-8")
-        return bcrypt.checkpw(password_bytes, hashed_password)
-
-    @staticmethod
-    def get_by_id(user_id):
-        cursor = connection.cursor()
-        sql = "SELECT * FROM user WHERE user_id = ?;"
-        cursor.execute(sql, (user_id,))
-        user = cursor.fetchone()
-        return user
+    def hash_password(password):
+        return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
     
-    @staticmethod
-    def get_by_email(user_email):
-        cursor = connection.cursor()
-        sql = "SELECT * FROM user WHERE user_email = ?;"
-        cursor.execute(sql, (user_email,))
-        user = cursor.fetchone()
-        return user
+    def verify_password(self, password):
+        if isinstance(self.user_password, bytes):
+            return bcrypt.checkpw(password.encode("utf-8"), self.user_password)
+        raise ValueError("Invalid hashed password format")
     
-    @staticmethod
-    def update_by_id(user_name, user_email, user_dateofbirth, user_password, user_id):
-        cursor = connection.cursor()
-        sql = """
-        UPDATE user
-        SET
-            user_name = ?,
-            user_email = ?,
-            user_dateofbirth = ?,
-            user_password = ?
-        WHERE
-            user_id = ?;
-        """
-        cursor.execute(sql, (user_name, user_email, user_dateofbirth, user_password, user_id,))
-        connection.commit()
-
-    @staticmethod
-    def delete_by_id(user_id):
-        cursor = connection.cursor()
-        sql = """
-        DELETE FROM user
-        WHERE
-            user_id = ?;
-        """
-        cursor.execute(sql, (user_id,))
-        connection.commit()
+    @classmethod
+    def create(cls, user_name, user_email, user_dateofbirth, user_password):
+        user = cls(
+            user_name=user_name,
+            user_email=user_email,
+            user_dateofbirth=user_dateofbirth,
+            user_password=cls.hash_password(user_password)
+        )
+        db.session.add(user)
+        db.session.commit()
+        return user

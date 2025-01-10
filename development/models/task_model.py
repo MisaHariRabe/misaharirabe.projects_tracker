@@ -1,43 +1,23 @@
-from db import connection
+from . import db
+from datetime import datetime
 
-cursor = connection.cursor()
-
-class TaskModel:
-    @staticmethod
-    def create(task_name, task_description, project_id):
-        sql = """
-            INSERT INTO task (task_name, task_description, task_datecreation, task_state, project_id)
-            VALUES (?, ?, date('now'), FALSE, ?);
-        """
-        cursor.execute(sql, (task_name, task_description, project_id,))
-        connection.commit()
-
-    @staticmethod
-    def get_by_project_id(project_id):
-        sql = """
-            SELECT *
-            FROM task
-            WHERE project_id = ?
-            ORDER BY task_state DESC;
-        """
-        cursor.execute(sql, (project_id,))
-        return cursor.fetchall()
+class Task(db.Model):
+    __tablename__ = 'task'
     
-    @staticmethod
-    def update_state_by_task_id(task_id):
-        sql = """
-            UPDATE task
-            SET task_state = TRUE
-            WHERE task_id = ?;
-        """
-        cursor.execute(sql, (task_id,))
-        connection.commit()
-
-    @staticmethod
-    def delete_by_task_id(task_id):
-        sql = """
-            DELETE FROM task
-            WHERE task_id = ?;
-        """
-        cursor.execute(sql, (task_id,))
-        connection.commit()
+    task_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    task_name = db.Column(db.String(100), nullable=False)
+    task_description = db.Column(db.Text, nullable=False)
+    task_datecreation = db.Column(db.DateTime, default=datetime.utcnow)
+    task_state = db.Column(db.Boolean, default=False)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.project_id', ondelete='CASCADE'), nullable=False)
+    
+    @classmethod
+    def create(cls, task_name, task_description, project_id):
+        task = cls(
+            task_name=task_name,
+            task_description=task_description,
+            project_id=project_id
+        )
+        db.session.add(task)
+        db.session.commit()
+        return task

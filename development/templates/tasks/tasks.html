@@ -1,15 +1,15 @@
 {%extends "base.html" %}
-{% block title %}Projects {{project_id}} Task List{% endblock %}
+{% block title %}Projects {{project.project_id}} Task List{% endblock %}
 
 {% block main %}
 {{ components.navbar() }}
 
 <div class="container mx-auto mt-8">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">{{project[1]}}</h1>
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">{{project.project_name}}</h1>
 
-    <p class="text-gray-600 mb-4">{{project[2]}}</p>
+    <p class="text-gray-600 mb-4">{{project.project_description}}</p>
 
-    <a href="/tasks/create/{{project[0]}}"
+    <a href="/tasks/create/{{project.project_id}}"
         class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">
         New Task
     </a>
@@ -25,14 +25,14 @@
         <tbody class="divide-y divide-gray-200">
             {% for task in tasks %}
             <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 text-gray-600">{{task[1]}}</td>
-                <td class="px-6 py-4 text-gray-700">{{task[2]}}</td>
-                <td class="px-6 py-4 text-gray-600">{{task[3]}}</td>
+                <td class="px-6 py-4 text-gray-600">{{task.task_name}}</td>
+                <td class="px-6 py-4 text-gray-700">{{task.task_description}}</td>
+                <td class="px-6 py-4 text-gray-600">{{task.task_datecreation}}</td>
                 <td class="px-6 py-4">
-                    {% if task[4] != 0 %}
+                    {% if task.task_state == True %}
                     <span class="text-green-600 font-bold">Finished</span>
                     {% else %}
-                    <form action="/tasks/{{project[0]}}/finish/{{task[0]}}" method="post">
+                    <form action="/tasks/{{project.project_id}}/finish/{{task.task_id}}" method="post">
                         <button type="submit"
                             class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">
                             Mark as done
@@ -41,7 +41,7 @@
                     {% endif %}
                 </td>
                 <td class="px-6 py-4 text-gray-700">
-                    <form action="/tasks/{{project[0]}}/delete/{{task[0]}}" method="post">
+                    <form action="/tasks/{{project.project_id}}/delete/{{task.task_id}}" method="post">
                         <button type="submit"
                             class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
                             Delete

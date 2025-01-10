@@ -1,7 +1,8 @@
 from flask import render_template, url_for, redirect, session, flash
 from utils.auth_utils import login_required
-from models.task_model import TaskModel
-from models.project_model import ProjectModel
+from models import db
+from models.task_model import Task
+from models.project_model import Project
 from forms.project_forms import TaskForm
 
 
@@ -9,8 +10,8 @@ class TaskController:
     @staticmethod
     @login_required
     def render_tasks_list(project_id):
-        project = ProjectModel.get_by_project_id(project_id)
-        tasks = TaskModel.get_by_project_id(project_id)
+        project = Project.query.filter(Project.project_id==project_id).one()
+        tasks = Task.query.filter(Task.project_id == project_id).all()
         return render_template("tasks/tasks.html", project=project, tasks=tasks)
 
     @staticmethod
@@ -27,12 +28,12 @@ class TaskController:
             return render_template("tasks/create_task.html", form=form, project_id=project_id)
 
         try:
-            project = ProjectModel.get_by_project_id(project_id)
+            project = Project.query.filter(Project.project_id == project_id).one()
             if not project or project[5] != session["user_id"]:
                 flash("Project not found", "error")
                 return redirect(url_for("render_projects"))
 
-            TaskModel.create(
+            Task.create(
                 task_name=form.task_name.data,
                 task_description=form.task_description.data,
                 project_id=project_id
@@ -47,7 +48,13 @@ class TaskController:
     @login_required
     def process_update_state(project_id, task_id):
         try:
-            TaskModel.update_state_by_task_id(task_id)
+            task = Task.query.filter(Task.task_id==task_id)
+            if task.user_id != session["user_id"]:
+                flash("Forbidden Access", "error")
+                return redirect(url_for("render_projects"))
+            
+            task.task_state = True
+            db.session.commit()
         except Exception as e:
             flash("An error occured while updating the task", "error")
         finally:
@@ -57,7 +64,13 @@ class TaskController:
     @login_required
     def process_delete_task(project_id, task_id):
         try:
-            TaskModel.delete_by_task_id(task_id)
+            task = Task.query.get_or_404(task_id)
+            if task.user_id != session["user_id"]:
+                flash("Forbidden Access", "error")
+                return redirect(url_for("render_tasks"))
+            
+            db.session.delete(task)
+            db.session.commit()
         except Exception as e:
             flash("An error occured while deleting the task", "error")
         finally:

@@ -39,17 +39,17 @@
             {% for project in projects %}
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4">
-                    <a href="/tasks/{{project[0]}}" class="text-blue-600 hover:underline font-medium">
-                        {{project[1]}}
+                    <a href="/tasks/{{project.project_id}}" class="text-blue-600 hover:underline font-medium">
+                        {{project.project_name}}
                     </a>
                 </td>
-                <td class="px-6 py-4 text-gray-700">{{project[2]}}</td>
-                <td class="px-6 py-4 text-gray-600">{{project[3]}}</td>
+                <td class="px-6 py-4 text-gray-700">{{project.project_description}}</td>
+                <td class="px-6 py-4 text-gray-600">{{project.project_datecreation}}</td>
                 <td class="px-6 py-4">
-                    {% if project[4] != 0 %}
+                    {% if project.project_state == True %}
                     <span class="text-green-600 font-bold">Finished</span>
                     {% else %}
-                    <form action="/projects/finish/{{project[0]}}" method="post">
+                    <form action="/projects/finish/{{project.project_id}}" method="post">
                         <button type="submit"
                             class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">
                             Mark as done
@@ -58,7 +58,7 @@
                     {% endif %}
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <form action="/projects/delete/{{project[0]}}" method="post">
+                    <form action="/projects/delete/{{project.project_id}}" method="post">
                         <button type="submit"
                             class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
                             Delete

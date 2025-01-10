@@ -1,100 +1,26 @@
-from db import connection
+from . import db
+from datetime import datetime
 
-cursor = connection.cursor()
-class ProjectModel:
-    @staticmethod
-    def create(project_name, project_description, user_id):
-        sql = """
-            INSERT INTO project (project_name, project_description, project_datecreation, project_state, user_id)
-            VALUES (?, ?, date('now'), FALSE, ?);
-        """
-        cursor.execute(sql, (project_name, project_description, user_id,))
-        connection.commit()
-
-    @staticmethod
-    def get_by_user_id(user_id):
-        sql = """
-            SELECT *
-            FROM project
-            WHERE user_id = ?;
-        """
-        cursor.execute(sql, (user_id,))
-        return cursor.fetchall()
+class Project(db.Model):
+    __tablename__ = 'project'
     
-    @staticmethod
-    def get_by_project_id(project_id):
-        sql = """
-            SELECT *
-            FROM project
-            WHERE project_id = ?;
-        """
-        cursor.execute(sql, (project_id,))
-        return cursor.fetchone()
-
-    @staticmethod
-    def get_by_project_name(project_name, user_id):
-        sql = """
-            SELECT *
-            FROM project
-            WHERE project_name LIKE ?
-            AND user_id = ?;
-        """
-        cursor.execute(sql, ("%{}%".format(project_name), user_id,))
-        return cursor.fetchall()
+    project_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    project_name = db.Column(db.String(100), nullable=False)
+    project_description = db.Column(db.Text, nullable=False)
+    project_datecreation = db.Column(db.DateTime, default=datetime.utcnow)
+    project_state = db.Column(db.Boolean, default=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id', ondelete='CASCADE'), nullable=False)
     
-    @staticmethod
-    def get_by_project_date_creation(project_datecreation, user_id):
-        sql = """
-            SELECT *
-            FROM project
-            WHERE project_datecreation = ?
-            AND user_id = ?;
-        """
-        cursor.execute(sql, (project_datecreation, user_id,))
-        return cursor.fetchall()
-
-    @staticmethod
-    def get_by_project_state(project_state, user_id):
-        sql = """
-            SELECT *
-            FROM project
-            WHERE project_state = ?
-            AND user_id = ?;
-        """
-        cursor.execute(sql, (project_state, user_id,))
-        return cursor.fetchall()
+    # Relation avec Task
+    tasks = db.relationship('Task', backref='project', lazy=True, cascade="all, delete-orphan")
     
-    @staticmethod
-    def update_by_project_id(project_name, project_description, project_id):
-        sql = """
-            UPDATE project
-            SET
-                project_name = ?,
-                project_description = ?
-            WHERE
-                project_id = ?;
-        """
-        cursor.execute(sql, (project_name, project_description, project_id,))
-        connection.commit()
-
-    @staticmethod
-    def update_state_by_project_id(project_id):
-        sql = """
-            UPDATE project
-            SET
-                project_state = TRUE
-            WHERE
-                project_id = ?;
-        """
-        cursor.execute(sql, (project_id,))
-        connection.commit()
-
-    @staticmethod
-    def delete_by_project_id(project_id):
-        sql = """
-            DELETE FROM project
-            WHERE
-                project_id = ?;
-        """
-        cursor.execute(sql, (project_id,))
-        connection.commit()
+    @classmethod
+    def create(cls, project_name, project_description, user_id):
+        project = cls(
+            project_name=project_name,
+            project_description=project_description,
+            user_id=user_id
+        )
+        db.session.add(project)
+        db.session.commit()
+        return project
