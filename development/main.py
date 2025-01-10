@@ -11,6 +11,11 @@ def login():
         return UserController.render_login()
     return UserController.process_login()
 
+@app.route("/logout", methods=["GET"])
+def logout():
+    if request.method == "GET":
+        return UserController.process_logout()
+
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
