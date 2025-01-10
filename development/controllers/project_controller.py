@@ -1,12 +1,14 @@
 from models.project_model import ProjectModel
-from flask import render_template, redirect, request, url_for, session
+from flask import render_template, redirect, url_for, session, flash
 from utils.auth_utils import login_required
+from forms.project_forms import ProjectForm
 
 class ProjectController:
     @staticmethod
     @login_required
     def render_create_project_form():
-        return render_template("projects/create_project.html")
+        form = ProjectForm()
+        return render_template("projects/create_project.html", form=form)
 
     @staticmethod
     @login_required
@@ -18,12 +20,23 @@ class ProjectController:
     @staticmethod
     @login_required
     def process_create_project():
-        user_id = session["user_id"]
-        data = request.form
-        project_name = data.get("project_name")
-        project_description = data.get("project_description")
-        ProjectModel.create(project_name, project_description, user_id)
-        return redirect(url_for("render_projects"))
+        form = ProjectForm()
+        if not form.validate_on_submit():
+            return render_template("projects/create_project.html", form=form)
+
+        try:
+            user_id = session["user_id"]
+            ProjectModel.create(
+                form.project_name.data,
+                form.project_description.data,
+                user_id
+            )
+            flash("Projet créé avec succès", "success")
+            return redirect(url_for("render_projects"))
+        except Exception as e:
+            flash("Une erreur s'est produite lors de la création du projet", "error")
+            return render_template("projects/create_project.html", form=form)
+    
     
     @staticmethod
     @login_required

@@ -1,5 +1,5 @@
 from models.user_model import UserModel
-from flask import render_template, redirect, url_for, request, session, flash
+from flask import render_template, redirect, url_for, session, flash
 from utils.auth_utils import login_required
 from forms.auth_forms import LoginForm, SignupForm
 
@@ -21,7 +21,7 @@ class UserController:
             return render_template("users/signup.html", form=form)
 
         if UserModel.get_by_email(form.user_email.data):
-            flash("Un compte existe déjà avec cet email", "error")
+            flash("An account is already using this email", "error")
             redirect(url_for("signup"))
         
         try:
@@ -31,10 +31,10 @@ class UserController:
                 form.user_email.data,
                 form.user_password.data
             )
-            flash("Compte créé avec succès", "success")
+            flash("Account created successfully", "success")
             return redirect(url_for("login"))
         except Exception as e:
-            flash("Une erreur s'est produite lors de la création du compte", "error")
+            flash("An error occured while creating your account, please try again later", "error")
             return render_template("users/signup.html", form=form)
     
     @staticmethod
@@ -45,14 +45,16 @@ class UserController:
 
         user = UserModel.get_by_email(form.user_email.data)
         if not user or not UserModel.verify_password(form.user_password.data, user[4]):
-            flash("Email ou mot de passe incorrect", "error")
+            flash("Invalid email or password", "error")
             return render_template("users/login.html", form=form)
         
         session["user_id"] = user[0]
+        flash("You were logged in successfully", "success")
         return redirect("/projects")
     
     @staticmethod
     @login_required
     def process_logout():
+        flash("You were logged out successfully", "success")
         session.pop("user_id")
         return redirect(url_for("login"))
