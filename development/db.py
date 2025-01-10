@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS
         user_name TEXT NOT NULL,
         user_email TEXT NOT NULL,
         user_dateofbirth DATE NOT NULL,
-        user_password TEXT NOT NULL
+        user_password BLOB NOT NULL
     );
 """)
 

@@ -36,10 +36,10 @@ class ProjectModel:
         sql = """
             SELECT *
             FROM project
-            WHERE project_name LIKE "%?%"
+            WHERE project_name LIKE ?
             AND user_id = ?;
         """
-        cursor.execute(sql, (project_name, user_id,))
+        cursor.execute(sql, ("%{}%".format(project_name), user_id,))
         return cursor.fetchall()
     
     @staticmethod

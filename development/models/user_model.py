@@ -1,12 +1,22 @@
+import bcrypt
 from db import connection
 
 class UserModel:
     @staticmethod
     def create(user_name, user_dateofbirth, user_email, user_password):
         cursor = connection.cursor()
+        password_bytes = user_password.encode("utf-8")
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password_bytes, salt)
+
         sql = "INSERT INTO user (user_name, user_dateofbirth, user_email, user_password) VALUES (?,?,?,?);"
-        cursor.execute(sql, (user_name, user_dateofbirth, user_email, user_password,))
+        cursor.execute(sql, (user_name, user_dateofbirth, user_email, hashed_password,))
         connection.commit()
+
+    @staticmethod
+    def verify_password(plain_password, hashed_password):
+        password_bytes = plain_password.encode("utf-8")
+        return bcrypt.checkpw(password_bytes, hashed_password)
 
     @staticmethod
     def get_by_id(user_id):

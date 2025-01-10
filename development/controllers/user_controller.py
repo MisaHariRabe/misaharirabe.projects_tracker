@@ -1,5 +1,5 @@
 from models.user_model import UserModel
-from flask import render_template, redirect, url_for, request, session
+from flask import render_template, redirect, url_for, request, session, flash
 from utils.auth_utils import login_required
 
 class UserController:
@@ -17,18 +17,34 @@ class UserController:
         user_dateofbirth = request.form["user_dateofbirth"]
         user_email = request.form["user_email"]
         user_password = request.form["user_password"]
-        UserModel.create(user_name, user_dateofbirth, user_email, user_password)
-        return redirect(url_for("login"))
+
+        existing_user = UserModel.get_by_email(user_email)
+        if existing_user:
+            flash("Un compte existe déjà avec cet email", "error")
+            redirect(url_for("signup"))
+        
+        try:
+            UserModel.create(user_name, user_dateofbirth, user_email, user_password)
+            flash("Compte créé avec succès", "success")
+            return redirect(url_for("login"))
+        except Exception as e:
+            flash("Une erreur s'est produite lors de la création du compte", "error")
+            return redirect(url_for("signup"))
     
     @staticmethod
     def process_login():
         user_email = request.form["user_email"]
         user_password = request.form["user_password"]
         user = UserModel.get_by_email(user_email)
+
         if not user:
-            return redirect("/")
-        if user[4] != user_password:
+            flash("Email incorrect", "error")
             return redirect(url_for("login"))
+        
+        if not UserModel.verify_password(user_password, user[4]):
+            flash("Mot de passe incorrect", "error")
+            return redirect(url_for("login"))
+        
         session["user_id"] = user[0]
         return redirect("/projects")
     
