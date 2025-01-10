@@ -291,74 +291,74 @@ Project Configuration:
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Task Configuration:
-    ☐ Configure task model (models/task_model.py)
-        ✔ from db import connection 
-        ✔ create TaskModel class
-            ✔ create
-            ☐ try on console
-            ☐ get_by_project_id
-            ☐ try on console
-            ☐ get_by_task_id
-            ☐ try on console
-            ☐ get_by_task_name
-            ☐ try on console
-            ☐ get_by_task_datecreation
-            ☐ try on console
-            ☐ get_by_task_state
-            ☐ try on console
-            ☐ update_by_task_id
-            ☐ try on console
-            ☐ update_state_by_task_id
-            ☐ try on console
-            ☐ delete_by_task_id
-            ☐ try on console
+Task Configuration:                                                                                 @done(10/04/2025 12:00:00)
+    ✔ Configure task model (models/task_model.py)                                                  @done(10/04/2025 12:00:00)
+        ✔ from db import connection                                                                @done(10/04/2025 12:00:00)
+        ✔ create TaskModel class                                                                   @done(10/04/2025 12:00:00)
+            ✔ create                                                                               @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ get_by_project_id                                                                    @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ get_by_task_id                                                                       @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ get_by_task_name                                                                     @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ get_by_task_datecreation                                                             @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ get_by_task_state                                                                    @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ update_by_task_id                                                                    @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ update_state_by_task_id                                                              @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
+            ✔ delete_by_task_id                                                                    @done(10/04/2025 12:00:00)
+            ✔ try on console                                                                       @done(10/04/2025 12:00:00)
 
-    ☐ Configure task views (templates/tasks):
-        ✔ Create Task
-            ✔ Create Task Title
-            ✔ Form
-                ✔ task_name
-                ✔ task_description
-        ☐ Tasks List
-            ☐ My Tasks Title
-            ☐ Create Task Button
-            ☐ Tasks List
-                ☐ task_title
-                ☐ task_description
-                ☐ task_datecreation
-                ☐ task_state = <> = Button (update_state_by_task_id)
-                ☐ delete button (link with task_id)
+    ✔ Configure task views (templates/tasks):                                                      @done(10/04/2025 12:00:00)
+        ✔ Create Task                                                                              @done(10/04/2025 12:00:00)
+            ✔ Create Task Title                                                                    @done(10/04/2025 12:00:00)
+            ✔ Form                                                                                 @done(10/04/2025 12:00:00)
+                ✔ task_name                                                                        @done(10/04/2025 12:00:00)
+                ✔ task_description                                                                 @done(10/04/2025 12:00:00)
+        ✔ Tasks List                                                                               @done(10/04/2025 12:00:00)
+            ✔ My Tasks Title                                                                       @done(10/04/2025 12:00:00)
+            ✔ Create Task Button                                                                   @done(10/04/2025 12:00:00)
+            ✔ Tasks List                                                                           @done(10/04/2025 12:00:00)
+                ✔ task_title                                                                       @done(10/04/2025 12:00:00)
+                ✔ task_description                                                                 @done(10/04/2025 12:00:00)
+                ✔ task_datecreation                                                                @done(10/04/2025 12:00:00)
+                ✔ task_state = <> = Button (update_state_by_task_id)                               @done(10/04/2025 12:00:00)
+                ✔ delete button (link with task_id)                                                @done(10/04/2025 12:00:00)
 
-    ☐ Configure task controller (controllers/task_controller.py)
-        ☐ from task_model import TaskModel
-        ☐ from Flask import render_template, url_for, redirect, request
-        ☐ create TaskController class
-            ☐ render_create_task_form   [GET]
-            ☐ render_tasks_list         [GET]
-                ☐ get { project_id } from url
-                ☐ get_by_project_id(project_id)
-                ☐ render_template tasks.html
-            ☐ create_task_process       [POST]
-                ☐ get {
+    ✔ Configure task controller (controllers/task_controller.py)                                   @done(10/04/2025 12:00:00)
+        ✔ from task_model import TaskModel                                                         @done(10/04/2025 12:00:00)
+        ✔ from Flask import render_template, url_for, redirect, request                            @done(10/04/2025 12:00:00)
+        ✔ create TaskController class                                                              @done(10/04/2025 12:00:00)
+            ✔ render_create_task_form   [GET]                                                      @done(10/04/2025 12:00:00)
+            ✔ render_tasks_list         [GET]                                                      @done(10/04/2025 12:00:00)
+                ✔ get { project_id } from url                                                      @done(10/04/2025 12:00:00)
+                ✔ get_by_project_id(project_id)                                                    @done(10/04/2025 12:00:00)
+                ✔ render_template tasks.html                                                       @done(10/04/2025 12:00:00)
+            ✔ create_task_process       [POST]                                                     @done(10/04/2025 12:00:00)
+                ✔ get {                                                                            @done(10/04/2025 12:00:00)
                         task_name,
                         task_description
                     } from form
-                ☐ create_task(task_name, task_description)
-                ☐ redirect render_tasks_list
-            ☐ update_task_process       [GET]
-                ☐ get { task_id } from url
-                ☐ update_state_by_task_id(task_id)
-                ☐ redirect render_tasks_list
-            ☐ delete_task_process       [GET]
-                ☐ get { task_id } from url
-                ☐ delete_by_task_id(task_id)
-                ☐ redirect render_tasks_list
+                ✔ create_task(task_name, task_description)                                         @done(10/04/2025 12:00:00)
+                ✔ redirect render_tasks_list                                                       @done(10/04/2025 12:00:00)
+            ✔ update_task_process       [GET]                                                      @done(10/04/2025 12:00:00)
+                ✔ get { task_id } from url                                                         @done(10/04/2025 12:00:00)
+                ✔ update_state_by_task_id(task_id)                                                 @done(10/04/2025 12:00:00)
+                ✔ redirect render_tasks_list                                                       @done(10/04/2025 12:00:00)
+            ✔ delete_task_process       [GET]                                                      @done(10/04/2025 12:00:00)
+                ✔ get { task_id } from url                                                         @done(10/04/2025 12:00:00)
+                ✔ delete_by_task_id(task_id)                                                       @done(10/04/2025 12:00:00)
+                ✔ redirect render_tasks_list                                                       @done(10/04/2025 12:00:00)
 
-    ☐ Configure task routes (main.py)
-        ☐ from task_controller import TaskController
-        ☐ [GET]    /task/create                     TaskController.render_create_task_form
-        ☐ [GET]    /task/project_id=<int:project_id>      TaskController.render_tasks_list
-        ☐ [POST]   /task/create/process             TaskController.create_task_process
-        ☐ [GET]    /task/done/<int:task_id>    TaskController.update_task_process
-        ☐ [GET]    /task/delete/<int:task_id>    TaskController.delete_task_process
+    ✔ Configure task routes (main.py)                                                              @done(10/04/2025 12:00:00)
+        ✔ from task_controller import TaskController                                               @done(10/04/2025 12:00:00)
+        ✔ [GET]    /task/create                     TaskController.render_create_task_form         @done(10/04/2025 12:00:00)
+        ✔ [GET]    /task/project_id=<int:project_id>      TaskController.render_tasks_list         @done(10/04/2025 12:00:00)
+        ✔ [POST]   /task/create/process             TaskController.create_task_process             @done(10/04/2025 12:00:00)
+        ✔ [GET]    /task/done/<int:task_id>    TaskController.update_task_process                  @done(10/04/2025 12:00:00)
+        ✔ [GET]    /task/delete/<int:task_id>    TaskController.delete_task_process                @done(10/04/2025 12:00:00)
