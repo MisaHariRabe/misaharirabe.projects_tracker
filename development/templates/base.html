@@ -1,3 +1,5 @@
+{% import 'components/navbar.html' as components %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,81 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} | Project Tracker App</title>
-    <style>
-        :root {
-            --primary: #2c2638;
-            --secondary: #3c364c;
-            --accent: #6d54b5;
-            --text-light: #fffcff;
-            --text-dark: #5f5c6b;
-            color-scheme: dark;
-        }
-
-        h1 {
-            font-weight: 400;
-        }
-
-        * {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            display: grid;
-            justify-content: center;
-            align-content: center;
-            min-height: 100vh;
-            background-color: var(--primary);
-            color: var(--text-light);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-        }
-
-        input,
-        textarea,
-        input:placeholder-shown {
-            background-color: var(--secondary);
-            border: none;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            color: var(--text-light);
-        }
-
-        button,
-        input[type="submit"] {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-        }
-
-        a {
-            color: var(--text-light);
-        }
-
-        .cta {
-            color: var(--text-light);
-            background-color: var(--accent);
-        }
-
-        .sub {
-            color: var(--text-dark);
-            font-size: 0.87rem;
-        }
-
-        .input_field_container {
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .input_field_container label {
-            font-size: 0.87rem;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>

@@ -17,7 +17,8 @@ class TaskModel:
         sql = """
             SELECT *
             FROM task
-            WHERE project_id = ?;
+            WHERE project_id = ?
+            ORDER BY task_state DESC;
         """
         cursor.execute(sql, (project_id,))
         return cursor.fetchall()

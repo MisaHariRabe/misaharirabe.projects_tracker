@@ -1,44 +1,56 @@
 {%extends "base.html" %}
 {% block title %}Projects {{project_id}} Task List{% endblock %}
+
 {% block main %}
-<a href="/logout">Logout</a>
-<h1>{{project[1]}}</h1>
-<p>{{project[2]}}</p>
-<br>
-<h2>Your Tasks</h2>
-<a href="/tasks/create/{{project_id}}">New task</a>
-<table>
-    <thead>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Date creation</th>
-        <th>State</th>
-        <th></th>
-    </thead>
-    <tbody>
-        {% for task in tasks %}
-        <tr>
-            <td>{{task[1]}}</td>
-            <td>{{task[2]}}</td>
-            <td>{{task[3]}}</td>
-            <td>
-                {% if task[4] != 0 %}
-                <span style="color: green;">
-                    <b>Finished</b>
-                </span>
-                {% else %}
-                <form action="/tasks/{{project_id}}/finish/{{task[0]}}" method="post">
-                    <input type="submit" value="Mark done">
-                </form>
-                {% endif %}
-            </td>
-            <td>
-                <form action="/tasks/{{project_id}}/delete/{{task[0]}}" method="post">
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{{ components.navbar() }}
+
+<div class="container mx-auto mt-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">{{project[1]}}</h1>
+
+    <p class="text-gray-600 mb-4">{{project[2]}}</p>
+
+    <a href="/tasks/create/{{project[0]}}"
+        class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">
+        New Task
+    </a>
+    <table class="min-w-full mt-6 bg-white border border-gray-200 shadow-md rounded-lg">
+        <thead class="bg-gray-100">
+            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Title</th>
+            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Description</th>
+            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Date creation
+            </th>
+            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">State</th>
+            <th class="px-6 py-3 text-center text-sm font-medium text-gray-600 uppercase tracking-wider">Actions</th>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+            {% for task in tasks %}
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 text-gray-600">{{task[1]}}</td>
+                <td class="px-6 py-4 text-gray-700">{{task[2]}}</td>
+                <td class="px-6 py-4 text-gray-600">{{task[3]}}</td>
+                <td class="px-6 py-4">
+                    {% if task[4] != 0 %}
+                    <span class="text-green-600 font-bold">Finished</span>
+                    {% else %}
+                    <form action="/tasks/{{project[0]}}/finish/{{task[0]}}" method="post">
+                        <button type="submit"
+                            class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">
+                            Mark as done
+                        </button>
+                    </form>
+                    {% endif %}
+                </td>
+                <td class="px-6 py-4 text-gray-700">
+                    <form action="/tasks/{{project[0]}}/delete/{{task[0]}}" method="post">
+                        <button type="submit"
+                            class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
