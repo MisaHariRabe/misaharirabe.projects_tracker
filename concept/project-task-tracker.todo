@@ -292,9 +292,9 @@ Project Configuration:
 
 Task Configuration:
     ☐ Configure task model (models/task_model.py)
-        ☐ from db import connection 
-        ☐ create TaskModel class
-            ☐ create
+        ✔ from db import connection 
+        ✔ create TaskModel class
+            ✔ create
             ☐ try on console
             ☐ get_by_project_id
             ☐ try on console
@@ -314,11 +314,11 @@ Task Configuration:
             ☐ try on console
 
     ☐ Configure task views (templates/tasks):
-        ☐ Create Task
-            ☐ Create Task Title
-            ☐ Form
-                ☐ task_name
-                ☐ task_description
+        ✔ Create Task
+            ✔ Create Task Title
+            ✔ Form
+                ✔ task_name
+                ✔ task_description
         ☐ Tasks List
             ☐ My Tasks Title
             ☐ Create Task Button
