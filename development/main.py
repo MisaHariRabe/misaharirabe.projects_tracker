@@ -1,10 +1,12 @@
 from flask import Flask, request
+from flask_wtf.csrf import CSRFProtect
 from controllers.user_controller import UserController
 from controllers.project_controller import ProjectController
 from controllers.task_controller import TaskController
 
 app = Flask(__name__)
 app.secret_key = 'BASIC_SECRET_KEY'
+csrf = CSRFProtect(app)
 
 @app.route("/", methods=['GET', 'POST'])
 def login():
