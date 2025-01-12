@@ -4,7 +4,7 @@
 {% block main %}
 {{components.navbar()}}
 
-<div class="container mx-auto mt-8">
+<div class="container mx-auto mt-8 px-4 sm:px-6 lg:px-8">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -15,22 +15,22 @@
         {% endif %}
     {% endwith %}
         
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Your projects</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">Your projects</h1>
 
-    <p class="text-gray-600 mb-4">
+    <p class="text-gray-600 mb-4 text-sm sm:text-base">
         Below is the list of all your ongoing and completed projects. Use the "New Project" button to create a new
         project or update the status of an existing one.
     </p>
 
     <button onclick="openCreateProjectModal()"
-        class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">
+        class="inline-block bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition text-sm sm:text-base">
         New Project
     </button>
 
-    <div id="createProjectModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-            <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Create a New Project</h1>
-            <form action="/projects/create" method="post" class="space-y-6">
+    <div id="createProjectModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h1 class="text-lg sm:text-2xl font-bold text-gray-800 mb-6 text-center">Create a New Project</h1>
+            <form action="/projects/create" method="post" class="space-y-4">
                 {{ form.csrf_token }}
                 <div>
                     {{ form.project_name.label(class="block text-sm font-medium text-gray-700 mb-2") }}
@@ -44,7 +44,7 @@
 
                 <div>
                     {{ form.project_description.label(class="block text-sm font-medium text-gray-700 mb-2") }}
-                    {{ form.project_description(class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500", rows="4", placeholder="Write a brief description") }}
+                    {{ form.project_description(class="w-full p-2 sm:p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500", rows="4", placeholder="Write a brief description") }}
                     {% if form.project_description.errors %}
                         {% for error in form.project_description.errors %}
                             <p class="mt-1 text-sm text-red-600">{{ error }}</p>
@@ -54,7 +54,7 @@
 
                 <div class="mt-4 flex justify-end space-x-4">
                     <button id="cancelCreateButton" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg">Cancel</button>
-                    <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Create Project
                     </button>
                 </div>
@@ -62,9 +62,9 @@
         </div>
     </div>
 
-    <div id="deleteModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h3 class="text-xl font-bold text-gray-800">Are you sure you want to delete this project?</h3>
+    <div id="deleteModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Are you sure you want to delete this project?</h3>
             <div class="mt-4 flex justify-end space-x-4">
                 <button id="cancelDeleteButton" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg">Cancel</button>
                 <a href="#" id="confirmDelete" class="px-4 py-2 bg-red-600 text-white rounded-lg">Delete</a>
@@ -72,41 +72,43 @@
         </div>
     </div>
 
-    <table class="min-w-full mt-6 bg-white border border-gray-200 shadow-md rounded-lg">
-        <thead class="bg-gray-100">
-            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Title</th>
-            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Description</th>
-            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Date creation
-            </th>
-            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">State</th>
-            <th class="px-6 py-3 text-center text-sm font-medium text-gray-600 uppercase tracking-wider">Actions</th>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-            {% for project in projects %}
-            <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4">
-                    <a href="/tasks/{{project.project_id}}" class="text-blue-600 hover:underline font-medium">
-                        {{project.project_name}}
-                    </a>
-                </td>
-                <td class="px-6 py-4 max-w-[350px] text-gray-700">{{project.project_description}}</td>
-                <td class="px-6 py-4 text-gray-600">{{project.project_datecreation}}</td>
-                <td class="px-6 py-4">
-                    {% if project.project_state == True %}
-                    <span class="text-green-600 font-bold">Finished</span>
-                    {% else %}
-                        <a href="/projects/finish/{{project.project_id}}" class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">Mark as done</a>
-                    {% endif %}
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button onclick="openDeleteModal({{ project.project_id }})" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="overflow-x-auto mt-6">
+        <table class="min-w-full mt-6 bg-white border border-gray-200 shadow-md rounded-lg">
+            <thead class="bg-gray-100">
+                <th class="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider">Title</th>
+                <th class="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider">Description</th>
+                <th class="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider">Date creation
+                </th>
+                <th class="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider">State</th>
+                <th class="px-4 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider">Actions</th>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for project in projects %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 sm:px-6 py-4">
+                        <a href="/tasks/{{project.project_id}}" class="text-blue-600 hover:underline font-medium">
+                            {{project.project_name}}
+                        </a>
+                    </td>
+                    <td class="px-4 sm:px-6 py-4 max-w-[350px] text-gray-700">{{project.project_description}}</td>
+                    <td class="px-4 sm:px-6 py-4 text-gray-600">{{project.project_datecreation}}</td>
+                    <td class="px-4 sm:px-6 py-4">
+                        {% if project.project_state == True %}
+                        <span class="text-green-600 font-bold">Finished</span>
+                        {% else %}
+                            <a href="/projects/finish/{{project.project_id}}" class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-xs sm:text-sm whitespace-nowrap">Mark as done</a>
+                        {% endif %}
+                    </td>
+                    <td class="px-4 sm:px-6 py-4 text-center">
+                        <button onclick="openDeleteModal({{ project.project_id }})" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-xs sm:text-sm">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
 {% block scripts %}
