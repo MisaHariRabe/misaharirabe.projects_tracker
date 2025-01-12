@@ -7,23 +7,18 @@ from forms.project_forms import ProjectForm
 class ProjectController:
     @staticmethod
     @login_required
-    def render_create_project_form():
-        form = ProjectForm()
-        return render_template("projects/create_project.html", form=form)
-
-    @staticmethod
-    @login_required
     def render_projects_list():
+        form = ProjectForm()
         user_id = session["user_id"]
         projects = Project.query.filter_by(user_id=user_id).all()
-        return render_template("projects/projects.html", projects=projects)
+        return render_template("projects/projects.html", form=form, projects=projects)
     
     @staticmethod
     @login_required
     def process_create_project():
         form = ProjectForm()
         if not form.validate_on_submit():
-            return render_template("projects/create_project.html", form=form)
+            return redirect("/projects", form=form)
 
         try:
             user_id = session["user_id"]
@@ -36,7 +31,7 @@ class ProjectController:
             return redirect(url_for("render_projects"))
         except Exception as e:
             flash("An error occured while creating the project", "error")
-            return render_template("projects/create_project.html", form=form)
+            return redirect("/projects")
     
     
     @staticmethod

@@ -10,22 +10,17 @@ class TaskController:
     @staticmethod
     @login_required
     def render_tasks_list(project_id):
+        form = TaskForm()
         project = Project.query.filter(Project.project_id==project_id).one()
         tasks = Task.query.filter(Task.project_id == project_id).all()
-        return render_template("tasks/tasks.html", project=project, tasks=tasks)
-
-    @staticmethod
-    @login_required
-    def render_create_task(project_id):
-        form = TaskForm()
-        return render_template("tasks/create_task.html", form=form, project_id=project_id)
+        return render_template("tasks/tasks.html", form=form, project=project, tasks=tasks)
     
     @staticmethod
     @login_required
     def process_create_task(project_id):
         form = TaskForm()
         if not form.validate_on_submit():
-            return render_template("tasks/create_task.html", form=form, project_id=project_id)
+            return redirect(f"/tasks/{project_id}")
 
         try:
             project = Project.query.filter(Project.project_id == project_id).one_or_none()
@@ -39,11 +34,11 @@ class TaskController:
                 project_id=project_id
             )
             flash("Task created successfully", "success")
-            return redirect(f"/tasks/{project_id}")
         except Exception as e:
             flash("An error occured while creating the task", "error")
             print(e)
-            return render_template("tasks/create_task.html", form=form, project_id=project_id)
+        finally:
+            return redirect(f"/tasks/{project_id}")
     
     @staticmethod
     @login_required
