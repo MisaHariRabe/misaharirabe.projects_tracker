@@ -5,6 +5,16 @@
 {{ components.navbar() }}
 
 <div class="container mx-auto mt-8">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="mb-4 p-4 rounded-md {% if category == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
     <h1 class="text-3xl font-bold text-gray-800 mb-6">{{project.project_name}}</h1>
 
     <p class="text-gray-600 mb-4">{{project.project_description}}</p>
@@ -32,21 +42,15 @@
                     {% if task.task_state == True %}
                     <span class="text-green-600 font-bold">Finished</span>
                     {% else %}
-                    <form action="/tasks/{{project.project_id}}/finish/{{task.task_id}}" method="post">
-                        <button type="submit"
-                            class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">
+                        <a href="/tasks/{{project.project_id}}/finish/{{task.task_id}}" class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">
                             Mark as done
-                        </button>
-                    </form>
+                        </a>
                     {% endif %}
                 </td>
                 <td class="px-6 py-4 text-gray-700">
-                    <form action="/tasks/{{project.project_id}}/delete/{{task.task_id}}" method="post">
-                        <button type="submit"
-                            class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
-                            Delete
-                        </button>
-                    </form>
+                    <a href="/tasks/{{project.project_id}}/delete/{{task.task_id}}" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
+                        Delete
+                    </a>
                 </td>
             </tr>
             {% endfor %}

@@ -56,11 +56,11 @@ def create_project():
         return ProjectController.render_create_project_form()
     return ProjectController.process_create_project()
 
-@app.route("/projects/finish/<int:project_id>", methods=["POST"])
+@app.route("/projects/finish/<int:project_id>", methods=["GET"])
 def process_project_state_update(project_id):
     return ProjectController.process_update_state(project_id)
 
-@app.route("/projects/delete/<int:project_id>", methods=["POST"])
+@app.route("/projects/delete/<int:project_id>", methods=["GET"])
 def process_project_delete(project_id):
     return ProjectController.process_delete_project(project_id)
 
@@ -74,11 +74,11 @@ def create_task(project_id):
         return TaskController.render_create_task(project_id)
     return TaskController.process_create_task(project_id)
 
-@app.route("/tasks/<int:project_id>/finish/<int:task_id>", methods=["POST"])
+@app.route("/tasks/<int:project_id>/finish/<int:task_id>", methods=["GET"])
 def process_task_state_update(project_id, task_id):
     return TaskController.process_update_state(project_id, task_id)
 
-@app.route("/tasks/<int:project_id>/delete/<int:task_id>", methods=["POST"])
+@app.route("/tasks/<int:project_id>/delete/<int:task_id>", methods=["GET"])
 def process_task_delete(project_id, task_id):
     return TaskController.process_delete_task(project_id, task_id)
 

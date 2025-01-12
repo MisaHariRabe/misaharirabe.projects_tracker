@@ -49,21 +49,11 @@
                     {% if project.project_state == True %}
                     <span class="text-green-600 font-bold">Finished</span>
                     {% else %}
-                    <form action="/projects/finish/{{project.project_id}}" method="post">
-                        <button type="submit"
-                            class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">
-                            Mark as done
-                        </button>
-                    </form>
+                        <a href="/projects/finish/{{project.project_id}}" class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md text-sm">Mark as done</a>
                     {% endif %}
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <form action="/projects/delete/{{project.project_id}}" method="post">
-                        <button type="submit"
-                            class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">
-                            Delete
-                        </button>
-                    </form>
+                    <a href="/projects/delete/{{project.project_id}}" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded-md text-sm">Delete</a>
                 </td>
             </tr>
             {% endfor %}

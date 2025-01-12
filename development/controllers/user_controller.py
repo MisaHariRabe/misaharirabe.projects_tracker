@@ -44,7 +44,7 @@ class UserController:
         if not form.validate_on_submit():
             return render_template("users/login.html", form=form)
 
-        user = User.query.where(User.user_email == form.user_email.data).one()
+        user = User.query.where(User.user_email == form.user_email.data).one_or_none()
         if not user or not user.verify_password(form.user_password.data):
             flash("Invalid email or password", "error")
             return render_template("users/login.html", form=form)
